@@ -7,7 +7,9 @@
         <input class="w3-input w3-section w3-border" type="text" placeholder="Subject" required name="Subject">
         <input class="w3-input w3-section w3-border" type="text" placeholder="Comment" required name="comment">
         <button class="w3-button w3-black" type="submit">SEND MESSAGE</button>
-    
+        <% if (logged){ %>
+            <a class="w3-button w3-green w3-right" title="View messages">&#9776;</a>
+        <%}%>
     </form>
         
 </div>
