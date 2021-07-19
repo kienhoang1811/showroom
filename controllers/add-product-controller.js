@@ -10,6 +10,7 @@ function render (response, webconfig,  errorMessage, model) {
         })
     })
 }
+
 exports.get = function ( request, response, webconfig, model){
     if (!session.logged(request)){
         response.redirect (webconfig.root)
@@ -17,17 +18,19 @@ exports.get = function ( request, response, webconfig, model){
     }
     render(response, webconfig, false, model)
 }
+
 exports.post = function ( request, response, webconfig, model){
     if (!session.logged(request)){
         response.redirect (webconfig.root)
         return
     }
+
     var productName = request.body.productName
     var imageTmpPath = request.file ? request.file.path : ''
 
-    model.addProduct (productName, imageTmpPath, function(errorMessage){
+    model.addProduct (0, productName, imageTmpPath, function(errorMessage){
         if ( errorMessage) {
-            render (response, webconfig, errorMessage, model)
+            render(response, webconfig, errorMessage, model)
             return
         }
         response.redirect (webconfig.root + '#products')
